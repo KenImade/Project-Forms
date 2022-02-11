@@ -11,6 +11,17 @@
 </form>
 -->
 
+<% if @user.errors.any? %>
+    <div>
+        <h2><%= pluralize(@user.errors.count, "error")%> caused this user not to be saved: </h2>
+
+        <ul>
+            <% @user.errors.each do |error| %>
+                <li><%= error.full_message %></li>
+            <% end %>
+        </ul>
+    </div>
+<% end %>
 
 <%= form_with model: @user do |form| %>
     <%= form.label :username, "Username Here: " %>
